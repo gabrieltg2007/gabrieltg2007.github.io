@@ -39,6 +39,7 @@
       line-height: 1.6;
       font-size: 16px;
       overflow-x: hidden;
+      width: 100%;
     }
 
     /* ── UTILITIES ──────────────────────────────────────── */
@@ -66,7 +67,7 @@
     }
     .nav-inner {
       display: flex; align-items: center; justify-content: space-between;
-      height: 60px; max-width: var(--max); margin: 0 auto; padding: 0 24px;
+      height: 60px; max-width: var(--max); margin: 0 auto; padding: 0 48px;
     }
     .logo {
       font-family: var(--ff-display);
@@ -96,7 +97,7 @@
 
     /* ── HERO ───────────────────────────────────────────── */
     .hero {
-      padding: 80px 0 64px;
+      padding: 100px 0 80px;
       position: relative;
       overflow: hidden;
     }
@@ -119,8 +120,8 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 60px;
+      grid-template-columns: 1fr 480px;
+      gap: 80px;
       align-items: center;
     }
 
@@ -277,7 +278,7 @@
     .problems-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      gap: 24px;
     }
     .problem-card {
       background: rgba(26,22,18,.8);
@@ -311,7 +312,7 @@
     /* ── HOW IT WORKS ───────────────────────────────────── */
     .how-section { background: rgba(200,146,42,.04); border-top: 1px solid rgba(200,146,42,.12); border-bottom: 1px solid rgba(200,146,42,.12); }
 
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 56px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; margin-top: 56px; }
     .step { position: relative; }
     .step-num {
       font-family: var(--ff-display);
@@ -556,12 +557,7 @@
     .footer-links a:hover { color: var(--gold); }
     .footer-copy { font-size: 12px; color: var(--muted); }
 
-    /* ── DIVIDER ────────────────────────────────────────── */
-    .divider {
-      border: none;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(200,146,42,.2), transparent);
-    }
+    /* divider removed */
 
     /* ── RESPONSIVE ─────────────────────────────────────── */
     @media (max-width: 900px) {
@@ -678,9 +674,7 @@
   </div>
 </section>
 
-<hr class="divider" />
-
-<!-- ── PROBLEMA ──────────────────────────────────────── -->
+<!-- divider removed -->
 <section class="section" id="problema">
   <div class="container">
     <div class="section-label">O problema</div>
@@ -821,9 +815,7 @@
   </div>
 </section>
 
-<hr class="divider" />
-
-<!-- ── LEMBRETES ──────────────────────────────────────── -->
+<!-- divider removed -->
 <section class="section reminder-section">
   <div class="container">
     <div class="reminder-grid">
