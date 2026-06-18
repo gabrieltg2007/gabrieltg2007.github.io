@@ -580,59 +580,57 @@
     }
 
     /* ── SCROLL ANIMATIONS ──────────────────────────────── */
+    /* Only animate when JS has loaded — prevents blank page if JS fails */
 
-    /* Base state: hidden */
-    .reveal {
+    /* Base state: hidden — only when .js-ready is on <html> */
+    .js-ready .reveal {
       opacity: 0;
       transform: translateY(28px);
       transition: opacity 0.6s cubic-bezier(.22,.61,.36,1), transform 0.6s cubic-bezier(.22,.61,.36,1);
     }
-    .reveal.revealed {
+    .js-ready .reveal.revealed {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Stagger delays for grid children */
-    .reveal-child {
+    .js-ready .reveal-child {
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.55s cubic-bezier(.22,.61,.36,1), transform 0.55s cubic-bezier(.22,.61,.36,1);
     }
-    .reveal-child.revealed { opacity: 1; transform: translateY(0); }
-    .reveal-child:nth-child(1) { transition-delay: 0s; }
-    .reveal-child:nth-child(2) { transition-delay: 0.1s; }
-    .reveal-child:nth-child(3) { transition-delay: 0.2s; }
-    .reveal-child:nth-child(4) { transition-delay: 0.3s; }
+    .js-ready .reveal-child.revealed { opacity: 1; transform: translateY(0); }
+    .js-ready .reveal-child:nth-child(1) { transition-delay: 0s; }
+    .js-ready .reveal-child:nth-child(2) { transition-delay: 0.1s; }
+    .js-ready .reveal-child:nth-child(3) { transition-delay: 0.2s; }
+    .js-ready .reveal-child:nth-child(4) { transition-delay: 0.3s; }
 
-    /* Slide from left */
-    .reveal-left {
+    .js-ready .reveal-left {
       opacity: 0;
       transform: translateX(-32px);
       transition: opacity 0.65s cubic-bezier(.22,.61,.36,1), transform 0.65s cubic-bezier(.22,.61,.36,1);
     }
-    .reveal-left.revealed { opacity: 1; transform: translateX(0); }
+    .js-ready .reveal-left.revealed { opacity: 1; transform: translateX(0); }
 
-    /* Slide from right */
-    .reveal-right {
+    .js-ready .reveal-right {
       opacity: 0;
       transform: translateX(32px);
       transition: opacity 0.65s cubic-bezier(.22,.61,.36,1), transform 0.65s cubic-bezier(.22,.61,.36,1);
     }
-    .reveal-right.revealed { opacity: 1; transform: translateX(0); }
+    .js-ready .reveal-right.revealed { opacity: 1; transform: translateX(0); }
 
-    /* Hero entrance — slightly faster */
-    .hero-text-anim > * {
+    /* Hero entrance */
+    .js-ready .hero-text-anim > * {
       opacity: 0;
       transform: translateY(20px);
       animation: heroIn 0.7s cubic-bezier(.22,.61,.36,1) forwards;
     }
-    .hero-text-anim > *:nth-child(1) { animation-delay: 0.05s; }
-    .hero-text-anim > *:nth-child(2) { animation-delay: 0.18s; }
-    .hero-text-anim > *:nth-child(3) { animation-delay: 0.3s; }
-    .hero-text-anim > *:nth-child(4) { animation-delay: 0.42s; }
-    .hero-text-anim > *:nth-child(5) { animation-delay: 0.52s; }
+    .js-ready .hero-text-anim > *:nth-child(1) { animation-delay: 0.05s; }
+    .js-ready .hero-text-anim > *:nth-child(2) { animation-delay: 0.18s; }
+    .js-ready .hero-text-anim > *:nth-child(3) { animation-delay: 0.30s; }
+    .js-ready .hero-text-anim > *:nth-child(4) { animation-delay: 0.42s; }
+    .js-ready .hero-text-anim > *:nth-child(5) { animation-delay: 0.52s; }
 
-    .hero-card-anim {
+    .js-ready .hero-card-anim {
       opacity: 0;
       transform: translateY(24px) scale(0.98);
       animation: heroCardIn 0.8s cubic-bezier(.22,.61,.36,1) 0.3s forwards;
@@ -654,10 +652,10 @@
       50% { box-shadow: 0 0 14px #4ade80; opacity: .7; }
     }
 
-    /* Counter animation for metric number */
+    /* Metric counter */
     .metric-num { transition: color .3s; }
 
-    /* Enhanced hover on problem cards */
+    /* Hover on problem cards */
     .problem-card {
       transition: border-color .25s, transform .3s cubic-bezier(.22,.61,.36,1), box-shadow .3s;
     }
@@ -666,7 +664,7 @@
       box-shadow: 0 12px 32px rgba(0,0,0,.4);
     }
 
-    /* Enhanced hover on depo cards */
+    /* Hover on depo cards */
     .depo {
       transition: border-color .25s, transform .3s cubic-bezier(.22,.61,.36,1);
     }
@@ -675,15 +673,11 @@
       border-color: rgba(200,146,42,.3);
     }
 
-    /* Step number shimmer on scroll-in */
-    .step-num {
-      transition: color 0.5s;
-    }
-    .step.revealed .step-num {
-      color: rgba(200,146,42,.35);
-    }
+    /* Step number */
+    .step-num { transition: color 0.5s; }
+    .step.revealed .step-num { color: rgba(200,146,42,.35); }
 
-    /* Feat icon subtle bounce on hover */
+    /* Feat icon hover */
     .feat-icon {
       transition: transform .3s cubic-bezier(.22,.61,.36,1), background .2s;
     }
@@ -712,8 +706,11 @@
 
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
-      .reveal, .reveal-child, .reveal-left, .reveal-right,
-      .hero-text-anim > *, .hero-card-anim { opacity: 1 !important; transform: none !important; }
+      .js-ready .reveal, .js-ready .reveal-child,
+      .js-ready .reveal-left, .js-ready .reveal-right,
+      .js-ready .hero-text-anim > *, .js-ready .hero-card-anim {
+        opacity: 1 !important; transform: none !important;
+      }
     }
 
 </head>
@@ -1122,13 +1119,14 @@
 </footer>
 
 <script>
+  /* ── MARK JS AS AVAILABLE (prevents blank page if JS fails) ── */
+  document.documentElement.classList.add('js-ready');
+
   /* ── FAQ TOGGLE ─────────────────────────────────────── */
   function toggleFaq(el) {
     const item = el.parentElement;
     const wasOpen = item.classList.contains('open');
-    // close all
     document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    // open clicked if it was closed
     if (!wasOpen) item.classList.add('open');
   }
 
@@ -1149,13 +1147,13 @@
 
   document.querySelectorAll(revealSelectors).forEach(el => observer.observe(el));
 
-  /* ── METRIC COUNTER ─────────────────────────────────── */
+  /* ── METRIC COUNTER (+43) ───────────────────────────── */
   const metricEl = document.querySelector('.metric-num');
   if (metricEl) {
-    const target = 43;
     const metricObserver = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         let start = 0;
+        const target = 43;
         const duration = 1200;
         const step = (timestamp) => {
           if (!start) start = timestamp;
