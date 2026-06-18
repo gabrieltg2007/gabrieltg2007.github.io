@@ -579,140 +579,10 @@
       .section { padding: 64px 0; }
     }
 
-    /* ── SCROLL ANIMATIONS ──────────────────────────────── */
-    /* Only animate when JS has loaded — prevents blank page if JS fails */
-
-    /* Base state: hidden — only when .js-ready is on <html> */
-    .js-ready .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.6s cubic-bezier(.22,.61,.36,1), transform 0.6s cubic-bezier(.22,.61,.36,1);
-    }
-    .js-ready .reveal.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .js-ready .reveal-child {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.55s cubic-bezier(.22,.61,.36,1), transform 0.55s cubic-bezier(.22,.61,.36,1);
-    }
-    .js-ready .reveal-child.revealed { opacity: 1; transform: translateY(0); }
-    .js-ready .reveal-child:nth-child(1) { transition-delay: 0s; }
-    .js-ready .reveal-child:nth-child(2) { transition-delay: 0.1s; }
-    .js-ready .reveal-child:nth-child(3) { transition-delay: 0.2s; }
-    .js-ready .reveal-child:nth-child(4) { transition-delay: 0.3s; }
-
-    .js-ready .reveal-left {
-      opacity: 0;
-      transform: translateX(-32px);
-      transition: opacity 0.65s cubic-bezier(.22,.61,.36,1), transform 0.65s cubic-bezier(.22,.61,.36,1);
-    }
-    .js-ready .reveal-left.revealed { opacity: 1; transform: translateX(0); }
-
-    .js-ready .reveal-right {
-      opacity: 0;
-      transform: translateX(32px);
-      transition: opacity 0.65s cubic-bezier(.22,.61,.36,1), transform 0.65s cubic-bezier(.22,.61,.36,1);
-    }
-    .js-ready .reveal-right.revealed { opacity: 1; transform: translateX(0); }
-
-    /* Hero entrance */
-    .js-ready .hero-text-anim > * {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: heroIn 0.7s cubic-bezier(.22,.61,.36,1) forwards;
-    }
-    .js-ready .hero-text-anim > *:nth-child(1) { animation-delay: 0.05s; }
-    .js-ready .hero-text-anim > *:nth-child(2) { animation-delay: 0.18s; }
-    .js-ready .hero-text-anim > *:nth-child(3) { animation-delay: 0.30s; }
-    .js-ready .hero-text-anim > *:nth-child(4) { animation-delay: 0.42s; }
-    .js-ready .hero-text-anim > *:nth-child(5) { animation-delay: 0.52s; }
-
-    .js-ready .hero-card-anim {
-      opacity: 0;
-      transform: translateY(24px) scale(0.98);
-      animation: heroCardIn 0.8s cubic-bezier(.22,.61,.36,1) 0.3s forwards;
-    }
-
-    @keyframes heroIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes heroCardIn {
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    /* Pulsing dot on chat */
-    .chat-dot {
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 6px #4ade80; opacity: 1; }
-      50% { box-shadow: 0 0 14px #4ade80; opacity: .7; }
-    }
-
-    /* Metric counter */
-    .metric-num { transition: color .3s; }
-
-    /* Hover on problem cards */
-    .problem-card {
-      transition: border-color .25s, transform .3s cubic-bezier(.22,.61,.36,1), box-shadow .3s;
-    }
-    .problem-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,.4);
-    }
-
-    /* Hover on depo cards */
-    .depo {
-      transition: border-color .25s, transform .3s cubic-bezier(.22,.61,.36,1);
-    }
-    .depo:hover {
-      transform: translateY(-4px);
-      border-color: rgba(200,146,42,.3);
-    }
-
-    /* Step number */
-    .step-num { transition: color 0.5s; }
-    .step.revealed .step-num { color: rgba(200,146,42,.35); }
-
-    /* Feat icon hover */
-    .feat-icon {
-      transition: transform .3s cubic-bezier(.22,.61,.36,1), background .2s;
-    }
-    .feat:hover .feat-icon {
-      transform: scale(1.12) rotate(-4deg);
-      background: rgba(200,146,42,.2);
-    }
-
-    /* FAQ smooth open */
-    .faq-a {
-      overflow: hidden;
-      max-height: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      opacity: 0;
-      display: block !important;
-      transition: max-height 0.4s cubic-bezier(.22,.61,.36,1),
-                  opacity 0.35s ease,
-                  padding 0.3s ease;
-    }
-    .faq-item.open .faq-a {
-      max-height: 200px;
-      padding-bottom: 18px;
-      opacity: 1;
-    }
-
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
-      .js-ready .reveal, .js-ready .reveal-child,
-      .js-ready .reveal-left, .js-ready .reveal-right,
-      .js-ready .hero-text-anim > *, .js-ready .hero-card-anim {
-        opacity: 1 !important; transform: none !important;
-      }
     }
-
+  </style>
 </head>
 <body>
 
@@ -734,7 +604,7 @@
   <div class="container">
     <div class="hero-grid">
 
-      <div class="hero-text-anim">
+      <div>
         <div class="hero-eyebrow">
           <span class="tag">💈 IA disponível 24 horas por dia</span>
         </div>
@@ -757,7 +627,7 @@
         </div>
       </div>
 
-      <div class="hero-card-anim">
+      <div>
         <div class="chat-card">
           <div class="chat-header">
             <div class="chat-avatar">💈</div>
@@ -807,24 +677,24 @@
 <!-- divider removed -->
 <section class="section" id="problema">
   <div class="container">
-    <div class="section-label reveal">O problema</div>
-    <h2 class="reveal">Você perde dinheiro toda vez que…</h2>
-    <p class="section-sub reveal">Cada mensagem não respondida é um corte que vai parar na barbearia ao lado.</p>
+    <div class="section-label">O problema</div>
+    <h2>Você perde dinheiro toda vez que…</h2>
+    <p class="section-sub">Cada mensagem não respondida é um corte que vai parar na barbearia ao lado.</p>
 
     <div class="problems-grid">
-      <div class="problem-card reveal-child">
+      <div class="problem-card">
         <span class="problem-icon">📵</span>
         <h3>Não Atende na Hora</h3>
         <p>O cliente manda mensagem perguntando sobre horário. Você está com a tesoura na mão. Ele não espera e marca em outra barbearia.</p>
         <div class="problem-loss">↑ RECEITA PERDIDA</div>
       </div>
-      <div class="problem-card reveal-child">
+      <div class="problem-card">
         <span class="problem-icon">🪑</span>
         <h3>Cadeira Vazia (No-Show)</h3>
         <p>Você reservou o horário, preparou tudo... e o cliente não apareceu. Tempo perdido que virou prejuízo direto no seu caixa.</p>
         <div class="problem-loss">↑ CADEIRA VAZIA</div>
       </div>
-      <div class="problem-card reveal-child">
+      <div class="problem-card">
         <span class="problem-icon">🌙</span>
         <h3>Depois do Expediente</h3>
         <p>Muitos homens querem marcar à noite ou no fim de semana. Se você não está online, perde o cliente para quem está.</p>
@@ -837,24 +707,24 @@
 <!-- ── COMO FUNCIONA ──────────────────────────────────── -->
 <section class="section how-section" id="como-funciona">
   <div class="container">
-    <div class="section-label reveal">Solução</div>
-    <h2 class="reveal">Configurado em 3 passos,<br>funcionando em minutos</h2>
-    <p class="section-sub reveal">Não precisa saber de tecnologia. Se você sabe usar WhatsApp, você consegue usar o BarberBot AI.</p>
+    <div class="section-label">Solução</div>
+    <h2>Configurado em 3 passos,<br>funcionando em minutos</h2>
+    <p class="section-sub">Não precisa saber de tecnologia. Se você sabe usar WhatsApp, você consegue usar o BarberBot AI.</p>
 
     <div class="steps">
-      <div class="step reveal-child">
+      <div class="step">
         <div class="step-num">01</div>
         <h3>Configure a Agenda</h3>
         <p>Defina seus barbeiros, horários de atendimento e serviços (corte, barba, degradê, etc.) no painel simples.</p>
         <div class="step-connector"></div>
       </div>
-      <div class="step reveal-child">
+      <div class="step">
         <div class="step-num">02</div>
         <h3>Treine a IA</h3>
         <p>Informe os preços, o endereço e as regras da sua barbearia. A IA aprende tudo e já sabe responder como você responderia.</p>
         <div class="step-connector"></div>
       </div>
-      <div class="step reveal-child">
+      <div class="step">
         <div class="step-num">03</div>
         <h3>Ative no WhatsApp</h3>
         <p>Leia o QR Code com seu celular e pronto. O BarberBot AI assume as conversas e começa a lotar sua agenda.</p>
@@ -868,7 +738,7 @@
   <div class="container">
     <div class="agenda-grid">
 
-      <div class="agenda-ui reveal-left">
+      <div class="agenda-ui">
         <div class="agenda-header">
           <span class="agenda-title">Agenda — Barbearia do Pedro</span>
           <span class="agenda-date">Hoje, quarta-feira</span>
@@ -913,7 +783,7 @@
         </div>
       </div>
 
-      <div class="agenda-features reveal-right">
+      <div class="agenda-features">
         <div class="section-label">Gestão completa</div>
         <h2 style="font-size:clamp(30px,4vw,44px);margin-bottom:8px">Uma agenda poderosa, sem complicação</h2>
         <p style="font-size:15px;color:var(--muted);margin-bottom:32px;line-height:1.7">Esqueça cadernos e WhatsApp desorganizado. Você e sua equipe têm visão total de todos os horários.</p>
@@ -950,7 +820,7 @@
   <div class="container">
     <div class="reminder-grid">
 
-      <div class="reveal-left">
+      <div>
         <div class="section-label">Sem faltas</div>
         <h2>Lembretes que garantem a presença</h2>
         <p style="font-size:15px;color:var(--muted);margin:16px 0 32px;line-height:1.7">
@@ -963,7 +833,7 @@
         </div>
       </div>
 
-      <div class="reveal-right">
+      <div>
         <div class="reminder-card">
           <div class="reminder-msg">
             💈 Oi, André! Só lembrando que seu corte é <strong>hoje às 14h</strong> com o Rodrigo, na Barbearia do Pedro.<br><br>
@@ -1015,17 +885,17 @@
     <h2 style="text-align:center">O que dizem os barbeiros</h2>
 
     <div class="depo-grid">
-      <div class="depo reveal-child">
+      <div class="depo">
         <p class="depo-text">No primeiro dia já vieram 12 agendamentos pelo WhatsApp sem eu precisar responder nada. Parece mágica.</p>
         <div class="depo-author">Rodrigo S.</div>
         <div class="depo-role">Dono, Barbearia Clássica — SP</div>
       </div>
-      <div class="depo reveal-child">
+      <div class="depo">
         <p class="depo-text">Meus clientes não percebem que é uma IA. O atendimento ficou mais rápido do que quando era eu mesmo respondendo.</p>
         <div class="depo-author">Diego M.</div>
         <div class="depo-role">Barbeiro, Studio 74 — RJ</div>
       </div>
-      <div class="depo reveal-child">
+      <div class="depo">
         <p class="depo-text">Acabou com as faltas. Os lembretes automáticos fizeram a diferença — minha agenda tá sempre lotada agora.</p>
         <div class="depo-author">André L.</div>
         <div class="depo-role">Proprietário, Old School Barber — BH</div>
@@ -1089,13 +959,13 @@
 <!-- ── CTA FINAL ──────────────────────────────────────── -->
 <section class="cta-section" id="contato">
   <div class="container">
-    <div class="tag reveal" style="margin-bottom:20px">Comece agora</div>
-    <h2 class="reveal">Sua barbearia,<br>trabalhando <span class="gold">enquanto você dorme</span></h2>
-    <p class="section-sub reveal">Fale com um especialista e veja como o BarberBot AI se encaixa na sua barbearia.</p>
-    <a href="https://wa.me/5500000000000?text=Olá! Quero saber mais sobre o BarberBot AI" class="btn-primary reveal" style="font-size:16px;padding:16px 36px">
+    <div class="tag" style="margin-bottom:20px">Comece agora</div>
+    <h2>Sua barbearia,<br>trabalhando <span class="gold">enquanto você dorme</span></h2>
+    <p class="section-sub">Fale com um especialista e veja como o BarberBot AI se encaixa na sua barbearia.</p>
+    <a href="https://wa.me/5500000000000?text=Olá! Quero saber mais sobre o BarberBot AI" class="btn-primary" style="font-size:16px;padding:16px 36px">
       💬 Falar com Especialista
     </a>
-    <div class="cta-badges reveal">
+    <div class="cta-badges">
       <span class="badge"><span class="dot"></span>Acesso completo</span>
       <span class="badge"><span class="dot"></span>Suporte em português</span>
       <span class="badge"><span class="dot"></span>Cancele a qualquer hora</span>
@@ -1119,75 +989,9 @@
 </footer>
 
 <script>
-  /* ── MARK JS AS AVAILABLE (prevents blank page if JS fails) ── */
-  document.documentElement.classList.add('js-ready');
-
-  /* ── FAQ TOGGLE ─────────────────────────────────────── */
   function toggleFaq(el) {
     const item = el.parentElement;
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
-  }
-
-  /* ── SCROLL REVEAL ──────────────────────────────────── */
-  const revealSelectors = '.reveal, .reveal-child, .reveal-left, .reveal-right';
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
-  });
-
-  document.querySelectorAll(revealSelectors).forEach(el => observer.observe(el));
-
-  /* ── METRIC COUNTER (+43) ───────────────────────────── */
-  const metricEl = document.querySelector('.metric-num');
-  if (metricEl) {
-    const metricObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        let start = 0;
-        const target = 43;
-        const duration = 1200;
-        const step = (timestamp) => {
-          if (!start) start = timestamp;
-          const progress = Math.min((timestamp - start) / duration, 1);
-          const ease = 1 - Math.pow(1 - progress, 3);
-          metricEl.textContent = '+' + Math.round(ease * target);
-          if (progress < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-        metricObserver.unobserve(entries[0].target);
-      }
-    }, { threshold: 0.5 });
-    metricObserver.observe(metricEl);
-  }
-
-  /* ── STAT COUNTER (-40%) ────────────────────────────── */
-  const statEl = document.querySelector('.stat-big');
-  if (statEl) {
-    const statObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        let start = 0;
-        const duration = 1000;
-        const step = (timestamp) => {
-          if (!start) start = timestamp;
-          const progress = Math.min((timestamp - start) / duration, 1);
-          const ease = 1 - Math.pow(1 - progress, 3);
-          statEl.textContent = '-' + Math.round(ease * 40) + '%';
-          if (progress < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-        statObserver.unobserve(entries[0].target);
-      }
-    }, { threshold: 0.5 });
-    statObserver.observe(statEl);
+    item.classList.toggle('open');
   }
 </script>
 
