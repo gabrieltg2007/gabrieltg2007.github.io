@@ -25,7 +25,7 @@
       --ff-mono:    'DM Mono', monospace;
 
       --radius: 6px;
-      --max: 1100px;
+      --max: 1280px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,7 +42,7 @@
     }
 
     /* ── UTILITIES ──────────────────────────────────────── */
-    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 48px; }
     .gold { color: var(--gold); }
     .tag {
       display: inline-block;
@@ -449,13 +449,15 @@
     .price-card {
       background: var(--card-bg);
       border: 1px solid rgba(200,146,42,.35);
+      border-top: 3px solid var(--gold);
       border-radius: 16px;
       padding: 48px 40px;
       max-width: 480px;
       margin: 0 auto;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
+    .price-card::before { display: none; }
     .price-card::before {
       content: '';
       position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -572,6 +574,7 @@
       .reminder-grid { grid-template-columns: 1fr; }
       .depo-grid { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; text-align: center; }
+      .container { padding: 0 24px; }
     }
 
     @media (max-width: 600px) {
