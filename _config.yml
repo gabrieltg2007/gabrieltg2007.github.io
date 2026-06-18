@@ -1,0 +1,7 @@
+# Desabilita o processamento Jekyll no GitHub Pages
+# Isso impede que o Jekyll injete âncoras nos headings
+# e modifique qualquer parte do HTML
+plugins: []
+markdown: kramdown
+kramdown:
+  auto_ids: false
